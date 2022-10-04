@@ -7,6 +7,8 @@ let score =0;
 let currTile;
 let otherTile;
 
+let octSize;
+
 const boardBox = document.getElementById("board");
 let scoreText =document.getElementById("score").innerHTML;
 
@@ -21,8 +23,6 @@ const randomCandy =() =>{
 }
 
 
-// https://github.com/ImKennyYip/candy-crush/blob/master/candy.js
-// https://www.youtube.com/watch?v=8yIKZQMGi0A
 
 const startGame =()=>{
     for(let r=0; r<rows; r++){
@@ -175,3 +175,4 @@ const checkValid = ()=>{
     return false;
 
 }
+
