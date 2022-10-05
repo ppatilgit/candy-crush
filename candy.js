@@ -10,12 +10,11 @@ let otherTile;
 let octSize;
 
 const boardBox = document.getElementById("board");
-let scoreText =document.getElementById("score").innerHTML;
 
 window.onload = ()=>{
     startGame();
-    window.setInterval(crushCandy(), 100);
-
+    window.setInterval(function(){crushCandy(), slideCandy(), generateCandy()}, 100);
+    
 };
 
 const randomCandy =() =>{
@@ -32,13 +31,12 @@ const startGame =()=>{
             tile.id=r.toString() + "-"+ c.toString();
             tile.src="./images/"+randomCandy()+".png";
 
-                //DRAG FUNCTIONALITY
-                tile.addEventListener("dragstart", dragStart); //click on a candy, initialize drag process
-                tile.addEventListener("dragover", dragOver);  //clicking on candy, moving mouse to drag the candy
-                tile.addEventListener("dragenter", dragEnter); //dragging candy onto another candy
-                tile.addEventListener("dragleave", dragLeave); //leave candy over another candy
-                tile.addEventListener("drop", dragDrop); //dropping a candy over another candy
-                tile.addEventListener("dragend", dragEnd); //after drag process completed, we swap candies
+                tile.addEventListener("dragstart", dragStart);
+                tile.addEventListener("dragover", dragOver);  
+                tile.addEventListener("dragenter", dragEnter);
+                tile.addEventListener("dragleave", dragLeave);
+                tile.addEventListener("drop", dragDrop); 
+                tile.addEventListener("dragend", dragEnd);
             
             boardBox.append(tile);
             row.push(tile);
@@ -102,6 +100,8 @@ const dragEnd= (event)=> {
             otherTile.src = currImg; 
         }else{
             crushCandy();
+            slideCandy();
+            generateCandy();
         }
 
     }
@@ -112,10 +112,7 @@ const crushCandy = ()=>{
     //crushFive();
     //crushFour();
     crushThree();
-    console.log(scoreText);
-    console.log(score);
-    scoreText = String(score);
-    console.log(scoreText);
+    document.getElementById("score").innerHTML = String(score);
 }
 
 const crushThree = ()=>{
@@ -150,7 +147,6 @@ const crushThree = ()=>{
 }
 
 const checkValid = ()=>{
-    //check rows
     for(let r=0;r<rows;r++){
         for(let c=0; c<columns-2;c++){
             let candy1=board[r][c];
@@ -161,7 +157,7 @@ const checkValid = ()=>{
             }
         }
     }
-    //check columns
+
     for(let c=0;c<columns;c++){
         for(let r=0; r<rows-2;r++){
             let candy1=board[r][c];
@@ -174,5 +170,30 @@ const checkValid = ()=>{
     }
     return false;
 
+}
+
+const slideCandy =()=>{
+    for(let c=0; c<columns; c++){
+        let ind=rows-1;
+        for(let r=columns-1;r>=0; r--){
+            if(!board[r][c].src.includes("blank")){
+                board[ind][c].src=board[r][c].src;
+                ind -= 1;
+            }
+        }
+
+        for(let r=ind;r>=0;r--){
+            board[r][c].src = "./images/blank.png";
+        }
+    }
+}
+
+const generateCandy =()=>{
+    for(let c=0; c<columns; c++){
+        if(board[0][c].src.includes("blank")){
+            board[0][c].src ="./images/"+randomCandy()+".png";
+        }
+    }
+    
 }
 
