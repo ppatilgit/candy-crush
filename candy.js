@@ -10,9 +10,11 @@ let otherTile;
 let octSize;
 
 const boardBox = document.getElementById("board");
+const players = document.querySelectorAll("h2");
 
 window.onload = ()=>{
     startGame();
+    getRandomUserOne(players.length);
     window.setInterval(function(){crushCandy(), slideCandy(), generateCandy()}, 100);
     
 };
@@ -195,5 +197,14 @@ const generateCandy =()=>{
         }
     }
     
+}
+
+const getRandomUserOne=(numUsers)=>{
+    for(let i=0; i<numUsers; i++){
+        fetch('https://randomuser.me/api/')
+        .then((response)=> response.json())
+        .then((data)=> document.querySelectorAll('h2')[i].innerHTML =`${data.results[0].name.first} ${data.results[0].name.last} : ${score}`)
+        .catch((error)=>console.log(error));
+    }
 }
 

@@ -6,11 +6,22 @@
 }
 
 body {
+  display: grid;
+  grid-template: "scores game turns";
   background: url("./images/background.jpg") no-repeat center center fixed;
   background-size: cover;
   font-family: "Roboto", sans-serif;
   color: white;
   text-align: center;
+}
+body .player__scores {
+  grid-area: scores;
+}
+body .game {
+  grid-area: game;
+}
+body .turns {
+  grid-area: turns;
 }
 body #board {
   width: 460px;

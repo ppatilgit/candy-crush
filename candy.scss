@@ -8,6 +8,18 @@ $font-body:"Roboto", sans-serif;
     box-sizing: border-box;
 }
 body{
+    display: grid;
+    grid-template:
+    "scores game turns";
+    .player__scores{
+        grid-area: scores;
+    }
+    .game{
+        grid-area: game;
+    }
+    .turns{
+        grid-area: turns;
+    }
     background: url("./images/background.jpg") no-repeat center center fixed;
     background-size: cover;
     font-family: $font-body;
