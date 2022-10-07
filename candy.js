@@ -3,7 +3,7 @@ let board =[];
 let rows= 9;
 let columns = 9;
 let score =0;
-let turns = 10;
+let turns = 2;
 
 let currTile;
 let otherTile;
@@ -104,10 +104,13 @@ const dragEnd= (event)=> {
             crushCandy();
             slideCandy();
             generateCandy();
-            // playSweet();
+            
             turns-=1;
             if(turns<=0){
+                playAudio("divine");
                 endGame();
+            }else{
+                playAudio("sweet");
             }
         }
 
@@ -219,7 +222,6 @@ const getRandomUserOne=(numUsers)=>{
 
 const endGame=()=>{
     /*display final score and close button */
-    // clearboard();
     popup.innerHTML = `Your Scored ${score} !!!`;
     popup.classList.toggle("show");
     playbutton.innerText =`Play Again`;
@@ -236,3 +238,8 @@ playbutton.addEventListener('click', (event)=>{
     getRandomUserOne(players.length);
     window.setInterval(function(){crushCandy(), slideCandy(), generateCandy()}, 100);
 });
+
+const playAudio = (audio)=>{
+    console.log(audio);
+    document.getElementById(audio).play();
+}
