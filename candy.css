@@ -36,4 +36,96 @@ body #board {
 body #board img {
   width: 50px;
   height: 50px;
+  cursor: pointer;
+}
+
+/* Popup container */
+.popup {
+  position: relative;
+  margin-top: -80px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* The actual popup (appears on top) */
+  /* Popup arrow */
+}
+.popup .popuptext {
+  font-family: "Dancing Script", sans-serif;
+  font-weight: bold;
+  font-size: 32px;
+  visibility: hidden;
+  width: 300px;
+  height: 100px;
+  background-color: rgb(54, 17, 38);
+  border: 5px solid rgb(90, 82, 82);
+  color: white;
+  text-align: middle;
+  vertical-align: middle;
+  border-radius: 10px;
+  padding: 50px auto;
+  position: absolute;
+  bottom: 125%;
+  left: 40%;
+  margin-left: -80px;
+  z-index: 1;
+}
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+.popup .playbutton {
+  margin: 100px;
+  padding: 0 6px 8px;
+  font-family: "Dancing Script", sans-serif;
+  box-sizing: border-box;
+  min-width: 220px;
+  font-weight: bold;
+  font-size: 32px;
+  color: #fff;
+  z-index: 1;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  border-style: solid;
+  border-color: #fe4495;
+  border-width: 3px 3px 4px;
+  text-shadow: 3px 2px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 40px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  background: #d5095f;
+}
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 2s;
+  animation: fadeIn 2s;
+}
+.popup .hide {
+  visibility: hidden;
+  -webkit-animation: fadeIn 2s;
+  animation: fadeIn 2s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=candy.css.map */

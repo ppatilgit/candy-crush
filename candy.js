@@ -3,6 +3,7 @@ let board =[];
 let rows= 9;
 let columns = 9;
 let score =0;
+let turns = 10;
 
 let currTile;
 let otherTile;
@@ -11,18 +12,18 @@ let octSize;
 
 const boardBox = document.getElementById("board");
 const players = document.querySelectorAll("h2");
+const game = document.querySelector("game");
+let playbutton = document.getElementById("play");
+let popup = document.getElementById("gameOver");
 
 window.onload = ()=>{
-    startGame();
-    getRandomUserOne(players.length);
-    window.setInterval(function(){crushCandy(), slideCandy(), generateCandy()}, 100);
+
     
 };
 
 const randomCandy =() =>{
     return candies[Math.floor(Math.random()*candies.length)]; //0 -5.99
 }
-
 
 
 const startGame =()=>{
@@ -45,7 +46,6 @@ const startGame =()=>{
         }
         board.push(row);
     }
-    console.log(board);
 }
 
 const dragStart = (event) =>{
@@ -104,6 +104,11 @@ const dragEnd= (event)=> {
             crushCandy();
             slideCandy();
             generateCandy();
+            // playSweet();
+            turns-=1;
+            if(turns<=0){
+                endGame();
+            }
         }
 
     }
@@ -115,6 +120,7 @@ const crushCandy = ()=>{
     //crushFour();
     crushThree();
     document.getElementById("score").innerHTML = String(score);
+    document.getElementById("turn").innerHTML = String(turns);
 }
 
 const crushThree = ()=>{
@@ -149,6 +155,9 @@ const crushThree = ()=>{
 }
 
 const checkValid = ()=>{
+    if(turns<=0){
+        return false;
+    }
     for(let r=0;r<rows;r++){
         for(let c=0; c<columns-2;c++){
             let candy1=board[r][c];
@@ -208,3 +217,22 @@ const getRandomUserOne=(numUsers)=>{
     }
 }
 
+const endGame=()=>{
+    /*display final score and close button */
+    // clearboard();
+    popup.innerHTML = `Your Scored ${score} !!!`;
+    popup.classList.toggle("show");
+    playbutton.innerText =`Play Again`;
+    playbutton.classList.remove("hide");
+    playbutton.classList.toggle("show");
+}
+
+playbutton.addEventListener('click', (event)=>{
+    if(playbutton.innerText==='Play Again'){
+        location.reload();
+    }
+    playbutton.classList.toggle("hide");
+    startGame();
+    getRandomUserOne(players.length);
+    window.setInterval(function(){crushCandy(), slideCandy(), generateCandy()}, 100);
+});

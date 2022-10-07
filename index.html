@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="./candy.css">
 </head>
 <body>
+    <!-- <embed src="./sounds/Candy-Crush-Saga-Theme-Song.mp3" loop="true" autostart="true" width="2" height="0"> -->
+    <!-- <embed src="./sounds/sweet.wav" id="sweet" loop="false" autostart="false" width="2" height="0"> -->
     <div class="player__scores">
         <h1>Highest Scores</h1>
         <h2></h2>
@@ -17,10 +19,16 @@
     </div>
     <div class="game">
         <h1>Score: <span id="score">0</span></h1>
-        <div id="board"></div>    
+        <div id="board"></div> 
+        <div class="popup">
+            <h1 class="popuptext" id="gameOver"></h1>
+            <button class="playbutton" id = "play" value="play">Play</button>
+            <!-- <button class="closebutton" id="close" value="close">Close</button> -->
+        </div>  
+        
     </div>
     <div class="turns">
-        <h1>Turns to Go: <span id="turn">20</span></h1>
+        <h1>Turns to Go: <span id="turn"></span></h1>
     </div>
     <script src="./candy.js"></script>
 </body>
