@@ -223,17 +223,16 @@ const getRandomUserOne=(numUsers)=>{
 const endGame=()=>{
     /*display final score and close button */
     popup.innerHTML = `Your Scored ${score} !!!`;
-    popup.classList.toggle("show");
+    popup.style.visibility = "visible";
     playbutton.innerText =`Play Again`;
-    playbutton.classList.remove("hide");
-    playbutton.classList.toggle("show");
+    playbutton.style.visibility= "visible";
 }
 
 playbutton.addEventListener('click', (event)=>{
     if(playbutton.innerText==='Play Again'){
         location.reload();
     }
-    playbutton.classList.toggle("hide");
+    playbutton.style.visibility= "hidden";
     startGame();
     getRandomUserOne(players.length);
     window.setInterval(function(){crushCandy(), slideCandy(), generateCandy()}, 100);

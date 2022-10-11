@@ -12,8 +12,19 @@ body{
     display: grid;
     grid-template:
     "scores game turns";
-    .player__scores{
+    .player__scores {
+        justify-content: center;
+        align-items: center;
         grid-area: scores;
+        color: #fe4495;
+        background-color: lightblue;
+        border-radius: 10px;
+        height: 200px;
+        width: 300px;
+        font-family: $font-cursive;
+        h1{
+            border: 5px solid white;
+        }
     }
     .game{
         grid-area: game;
@@ -21,6 +32,7 @@ body{
     .turns{
         grid-area: turns;
     }
+    
     background: url("./images/background.jpg") no-repeat center center fixed;
     
     background-size: cover;
@@ -42,12 +54,33 @@ body{
             cursor: pointer;
         }
     }
-
-   
 }
 
+audio::-webkit-media-controls-panel {
+    background-color: #d5095f;
+    color: #fff;
+}
+audio::-webkit-media-controls-play-button {
+    background-color: white;
+    border-radius: 50%;
+}
 
-
+audio::-webkit-media-controls-timeline {
+    visibility: hidden;
+}
+audio::-webkit-media-controls-current-time-display {
+    visibility: hidden;
+}
+audio::-webkit-media-controls-time-remaining-display {
+    visibility: hidden;
+}
+audio::-webkit-media-controls-volume-slider {
+    color: white;
+}
+audio::-webkit-media-controls-mute-button {
+    background-color: white;
+    border-radius: 50%;
+}
 /* Popup container */
 .popup {
     position: relative;
@@ -111,29 +144,5 @@ body{
         -webkit-border-radius: 40px;
         -moz-border-radius: 40px;
         background: #d5095f;
-    }
-    .show {
-        visibility: visible;
-        -webkit-animation: fadeIn 2s;
-        animation: fadeIn 2s
-    } 
-    
-    .hide{
-       visibility: hidden;
-        -webkit-animation: fadeIn 2s;
-        animation: fadeIn 2s 
-    }
-    
-  }
-   
-  
-  /* Add animation (fade in the popup) */
-  @-webkit-keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-  
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
+    }    
   }
