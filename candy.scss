@@ -121,6 +121,7 @@ body{
     }
     .turns{
         grid-area: turns;
+      
     }
     
 
@@ -149,6 +150,17 @@ body{
         background-color: white;
         border-radius: 50%;
     }
+
+    @media screen and (max-width: 600px) {
+        display: flex;       
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .player__scores{
+            display: none;
+        }
+    }
 }
+
 
 

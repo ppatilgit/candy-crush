@@ -134,4 +134,15 @@ body audio::-webkit-media-controls-volume-slider {
 body audio::-webkit-media-controls-mute-button {
   background-color: white;
   border-radius: 50%;
+}
+@media screen and (max-width: 600px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  body .player__scores {
+    display: none;
+  }
 }/*# sourceMappingURL=candy.css.map */

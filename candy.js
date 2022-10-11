@@ -207,7 +207,6 @@ const generateCandy =()=>{
             board[0][c].src ="./images/"+randomCandy()+".png";
         }
     }
-    
 }
 
 const getRandomUserOne=(numUsers)=>{
@@ -238,6 +237,5 @@ playbutton.addEventListener('click', (event)=>{
 });
 
 const playAudio = (audio)=>{
-    console.log(audio);
     document.getElementById(audio).play();
 }
