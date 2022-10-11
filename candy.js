@@ -1,9 +1,10 @@
 let candies = ["Blue", "Orange", "Green", "Yellow", "Red", "Purple"];
+const scores = [2020, 1930, 1850, 1770, 1600]
 let board =[];
 let rows= 9;
 let columns = 9;
 let score =0;
-let turns = 2;
+let turns = 10;
 
 let currTile;
 let otherTile;
@@ -119,8 +120,6 @@ const dragEnd= (event)=> {
 }
 
 const crushCandy = ()=>{
-    //crushFive();
-    //crushFour();
     crushThree();
     document.getElementById("score").innerHTML = String(score);
     document.getElementById("turn").innerHTML = String(turns);
@@ -215,7 +214,7 @@ const getRandomUserOne=(numUsers)=>{
     for(let i=0; i<numUsers; i++){
         fetch('https://randomuser.me/api/')
         .then((response)=> response.json())
-        .then((data)=> document.querySelectorAll('h2')[i].innerHTML =`${data.results[0].name.first} ${data.results[0].name.last} : ${score}`)
+        .then((data)=> document.querySelectorAll('h2')[i].innerHTML =`${data.results[0].name.first} ${data.results[0].name.last} : ${scores[i]}`)
         .catch((error)=>console.log(error));
     }
 }

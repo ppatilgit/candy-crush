@@ -9,6 +9,14 @@ $font-cursive: "Dancing Script", sans-serif;
     box-sizing: border-box;
 }
 body{
+
+    background: url("./images/background.jpg") no-repeat center center fixed;
+    
+    background-size: cover;
+    font-family: $font-body;
+    color: white;
+    text-align: center;
+
     display: grid;
     grid-template:
     "scores game turns";
@@ -28,121 +36,119 @@ body{
     }
     .game{
         grid-area: game;
+
+        #board{
+            width: 460px;
+            height: 460px;
+            background-color: lightblue;
+            border: 5px solid slategray;
+            border-radius: 10px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            img{
+                width: 50px;
+                height: 50px;
+                cursor: pointer;
+            }
+        }
+        
+    /* Popup container */
+    .popup {
+        position: relative;
+        margin-top: -80px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        /* The actual popup (appears on top) */
+        .popuptext {
+            font-family: $font-cursive;
+            font-weight: bold;
+            font-size: 32px;
+            visibility: hidden;
+            width: 300px;
+            height: 100px;
+            background-color: rgb(54, 17, 38);
+            border: 5px solid rgb(90, 82, 82);
+            color: white;
+            text-align: middle;
+            vertical-align: middle;
+            border-radius: 10px;
+            padding: 50px auto;
+            position: absolute;
+            bottom: 125%;
+            left: 40%;
+            margin-left: -80px;
+            z-index: 1;
+        }
+
+        /* Popup arrow */
+        .popuptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .playbutton {
+            // visibility: hidden;
+            margin: 100px;
+            padding: 0 6px 8px;
+            font-family: $font-cursive;
+            box-sizing: border-box;
+            min-width: 220px;
+            font-weight: bold;
+            font-size: 32px;
+            color: #fff;
+            z-index: 1;
+            cursor: pointer;
+            outline: none;
+            overflow: hidden;
+            border-style: solid;
+            border-color: #fe4495;
+            border-width: 3px 3px 4px;
+            text-shadow: 3px 2px 0 rgba(0, 0, 0, 0.3);
+            border-radius: 40px;
+            -webkit-border-radius: 40px;
+            -moz-border-radius: 40px;
+            background: #d5095f;
+        }    
+    }
     }
     .turns{
         grid-area: turns;
     }
     
-    background: url("./images/background.jpg") no-repeat center center fixed;
-    
-    background-size: cover;
-    font-family: $font-body;
-    color: white;
-    text-align: center;
-    #board{
-        width: 460px;
-        height: 460px;
-        background-color: lightblue;
-        border: 5px solid slategray;
-        border-radius: 10px;
-        margin: 0 auto;
-        display: flex;
-        flex-wrap: wrap;
-        img{
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-        }
-    }
-}
 
-audio::-webkit-media-controls-panel {
-    background-color: #d5095f;
-    color: #fff;
-}
-audio::-webkit-media-controls-play-button {
-    background-color: white;
-    border-radius: 50%;
-}
-
-audio::-webkit-media-controls-timeline {
-    visibility: hidden;
-}
-audio::-webkit-media-controls-current-time-display {
-    visibility: hidden;
-}
-audio::-webkit-media-controls-time-remaining-display {
-    visibility: hidden;
-}
-audio::-webkit-media-controls-volume-slider {
-    color: white;
-}
-audio::-webkit-media-controls-mute-button {
-    background-color: white;
-    border-radius: 50%;
-}
-/* Popup container */
-.popup {
-    position: relative;
-    margin-top: -80px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    /* The actual popup (appears on top) */
-    .popuptext {
-        font-family: $font-cursive;
-        font-weight: bold;
-        font-size: 32px;
-        visibility: hidden;
-        width: 300px;
-        height: 100px;
-        background-color: rgb(54, 17, 38);
-        border: 5px solid rgb(90, 82, 82);
-        color: white;
-        text-align: middle;
-        vertical-align: middle;
-        border-radius: 10px;
-        padding: 50px auto;
-        position: absolute;
-        bottom: 125%;
-        left: 40%;
-        margin-left: -80px;
-        z-index: 1;
-    }
-
-     /* Popup arrow */
-    .popuptext::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: #555 transparent transparent transparent;
-    }
-
-     .playbutton {
-        // visibility: hidden;
-        margin: 100px;
-        padding: 0 6px 8px;
-        font-family: $font-cursive;
-        box-sizing: border-box;
-        min-width: 220px;
-        font-weight: bold;
-        font-size: 32px;
+    audio::-webkit-media-controls-panel {
+        background-color: #d5095f;
         color: #fff;
-        z-index: 1;
-        cursor: pointer;
-        outline: none;
-        overflow: hidden;
-        border-style: solid;
-        border-color: #fe4495;
-        border-width: 3px 3px 4px;
-        text-shadow: 3px 2px 0 rgba(0, 0, 0, 0.3);
-        border-radius: 40px;
-        -webkit-border-radius: 40px;
-        -moz-border-radius: 40px;
-        background: #d5095f;
-    }    
-  }
+    }
+    audio::-webkit-media-controls-play-button {
+        background-color: white;
+        border-radius: 50%;
+    }
+    
+    audio::-webkit-media-controls-timeline {
+        visibility: hidden;
+    }
+    audio::-webkit-media-controls-current-time-display {
+        visibility: hidden;
+    }
+    audio::-webkit-media-controls-time-remaining-display {
+        visibility: hidden;
+    }
+    audio::-webkit-media-controls-volume-slider {
+        color: white;
+    }
+    audio::-webkit-media-controls-mute-button {
+        background-color: white;
+        border-radius: 50%;
+    }
+}
+
+
